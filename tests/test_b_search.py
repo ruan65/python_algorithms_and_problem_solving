@@ -1,4 +1,5 @@
-from leetcode.search.b_search import b_search_index, Solution
+from leetcode.search.b_search import b_search_recur, b_search_iterative, b_search_recur_poi
+from leetcode.search.b_search_index import Solution
 
 big_data = [-998, -997, -995, -994, -991, -986, -984, -982, -981, -980, -978, -975, -973, -972, -970, -968, -967, -966,
             -962, -961, -960, -959, -958, -954, -953, -952, -950, -947, -946, -945, -944, -943, -942, -941, -939, -937,
@@ -53,7 +54,7 @@ big_data = [-998, -997, -995, -994, -991, -986, -984, -982, -981, -980, -978, -9
             978, 979, 980, 981, 982, 986, 987, 988, 990, 992, 994, 995, 997]
 
 
-def test_b_search():
+def test_b_search_index():
     # True
     assert Solution().search(None, None) == -1
     assert Solution().search(None, 10) == -1
@@ -70,3 +71,43 @@ def test_b_search():
     assert Solution().search([-10000, 1, 2], -10000) == 0
     assert Solution().search([-1, 0, 3, 5, 9, 12], 9) == 4
     assert Solution().search(big_data, 988) == 994
+    assert Solution().search([1, 2], 3) == -1
+
+
+def test_b_search_recur():
+    # True
+    assert b_search_recur([1], 1) is True
+    assert b_search_recur([1, 2], 2) is True
+    assert b_search_recur([1, 2, 3], 3) is True
+    assert b_search_recur(big_data, 385) is True
+    # False
+    assert b_search_recur(big_data, 998) is False
+    assert b_search_recur([], 1) is False
+    assert b_search_recur([2, 3], 1) is False
+    assert b_search_recur([], 1) is False
+
+
+def test_b_search_iterative():
+    # True
+    assert b_search_iterative([1], 1) is True
+    assert b_search_iterative([1, 2], 2) is True
+    assert b_search_iterative([1, 2, 3], 3) is True
+    assert b_search_iterative(big_data, 385) is True
+    # False
+    assert b_search_iterative(big_data, 998) is False
+    assert b_search_iterative([], 1) is False
+    assert b_search_iterative([2, 3], 1) is False
+    assert b_search_iterative([], 1) is False
+
+
+def test_b_search_recur_pointers():
+    # True
+    assert b_search_recur_poi([1], 1) is True
+    assert b_search_recur_poi([1, 2], 2) is True
+    assert b_search_recur_poi([1, 2, 3], 3) is True
+    assert b_search_recur_poi(big_data, 385) is True
+    # False
+    assert b_search_recur_poi(big_data, 998) is False
+    assert b_search_recur_poi([], 1) is False
+    assert b_search_recur_poi([2, 3], 1) is False
+    assert b_search_recur_poi([], 1) is False

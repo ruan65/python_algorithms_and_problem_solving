@@ -25,5 +25,10 @@
 # if [0]:
 #     print('[0] is True')
 
-print([1,2,3][-1])
+# print([1, 2, 3][-1])
+#
+# print(not [])
 
+print((5 + 1) >> 1)
+print((30) >> 2)
+print(3 << 2)
