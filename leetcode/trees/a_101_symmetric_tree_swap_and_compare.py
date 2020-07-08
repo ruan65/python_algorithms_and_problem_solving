@@ -39,7 +39,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    t = TreeNode(1, right=TreeNode(2, left=TreeNode(3)), left=TreeNode(2, left=TreeNode(3)))
+    t = TreeNode(1, right=TreeNode(2, left=TreeNode(3)), left=TreeNode(2, right=TreeNode(3)))
     # t2 = TreeNode(1, left=TreeNode(2, right=TreeNode(3)))
     # print(f'left={t.left.val} right={t.right.val}')
     # swt = swap_tree(t)

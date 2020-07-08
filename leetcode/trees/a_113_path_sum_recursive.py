@@ -5,49 +5,24 @@ class TreeNode:
         self.right = right
 
 
-def is_leaf(n: TreeNode) -> bool:
-    return not n.left and not n.right
-
-
-# def path_sum(node: TreeNode, k: int) -> [[int]]:
-#     if not node:
-#         return []
-#     result = []
-#     stack = [[node, []]]
-#     while stack:
-#         nd, path = stack.pop()
-#         if is_leaf(nd) and sum(path) + nd.val == k:
-#             path.append(nd.val)
-#             result.append(path)
-#         if nd.left:
-#             cp = list.copy(path)
-#             cp.append(nd.val)
-#             stack.append([nd.left, cp])
-#         if nd.right:
-#             cp = list.copy(path)
-#             cp.append(nd.val)
-#             stack.append([nd.right, cp])
-#     return result
-
-def path_sum(node: TreeNode, k: int) -> [[int]]:
-    if not node:
-        return []
-    result = []
-    stack = [(node, node.val, [node.val])]
-    while stack:
-        nd, sm, path = stack.pop()
-        if is_leaf(nd) and sm == k:
-            result.append(path)
-        if nd.left:
-            stack.append((nd.left, sm + nd.left.val, path + [nd.left.val]))
-        if nd.right:
-            stack.append((nd.right, sm + nd.right.val, path + [nd.right.val]))
-    return result
-
-
 class Solution:
     def pathSum(self, root: TreeNode, sum: int) -> [[int]]:
-        return path_sum(root, sum)
+        answer = []
+
+        def dfs_fill(nd: TreeNode, pth: [], k: int):
+            if not nd:
+                return
+            if not nd.left and not nd.right:
+                if nd.val == k:
+                    rs = pth[:]
+                    rs.append(nd.val)
+                    answer.append(rs)
+                return
+            dfs_fill(nd.left, pth + [nd.val], k - nd.val)
+            dfs_fill(nd.right, pth + [nd.val], k - nd.val)
+
+        dfs_fill(root, [], sum)
+        return answer
 
 
 if __name__ == '__main__':

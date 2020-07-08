@@ -1,34 +1,22 @@
-# recursive = out of time
-# class Solution:
-#     def climbStairs(self, n: int) -> int:
-#         if n == 1:
-#             return 1
-#         if n == 2:
-#             return 2
-#         return self.climbStairs(n - 1) + self.climbStairs(n - 2)
-
-counter = 0
-
-
-def count(n: int, hm: {int: int}) -> int:
-    global counter
-    counter += 1
-    if n in hm:
-        return hm[n]
-
-    res = count(n - 1, hm) + count(n - 2, hm)
-    hm[n] = res
-    return res
-
-
 class Solution:
 
     def climbStairs(self, n: int) -> int:
-        hm = {1: 1, 2: 2}
 
-        return count(n, hm)
+        if n == 1:
+            return 1
+        if n == 2:
+            return 2
+
+        one_before = 2
+        two_before = 1
+        all_way = 0
+
+        for i in range(2, n):
+            all_way = one_before + two_before
+            two_before = one_before
+            one_before = all_way
+        return all_way
 
 
 if __name__ == '__main__':
     print(Solution().climbStairs(20))
-    print(f'counter: {counter}')

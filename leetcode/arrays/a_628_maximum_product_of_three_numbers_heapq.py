@@ -1,4 +1,8 @@
+import heapq
+
+
 class Solution:
     def maximumProduct(self, nums: [int]) -> int:
-        nums.sort()
-        return max(nums[-1] * nums[-2] * nums[-3], nums[0] * nums[1] * nums[-1])
+        hmn = heapq.nsmallest(2, nums)
+        hmx = heapq.nlargest(3, nums)
+        return max(hmx[0] * hmx[1] * hmx[2], hmn[0] * hmn[1] * hmx[0])

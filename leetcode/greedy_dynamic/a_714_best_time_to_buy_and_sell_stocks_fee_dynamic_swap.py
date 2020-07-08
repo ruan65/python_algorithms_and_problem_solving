@@ -21,13 +21,13 @@ class Solution:
             return 0
         n = len(pr)
 
-        dp = [[0 for r in range(n)] for c in range(2)]
+        dp = [[0 for c in range(n)] for r in range(2)]
 
         dp[0][0] = 0
         dp[1][0] = -pr[0]
 
         for i in range(1, n):
-            dp[0][i] = max(dp[1][i - 1], dp[1][i - 1] + pr[i] - fee)
+            dp[0][i] = max(dp[0][i - 1], dp[1][i - 1] + pr[i] - fee)
             dp[1][i] = max(dp[1][i - 1], dp[0][i - 1] - pr[i])
 
         for r in dp:

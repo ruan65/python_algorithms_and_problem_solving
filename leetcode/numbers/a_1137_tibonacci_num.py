@@ -1,40 +1,20 @@
 # class Solution:
-#     def fib(self, N: int) -> int:
-#         if N == 0:
+#     def tribonacci(self, n: int) -> int:
+#         if n == 0:
 #             return 0
-#         if N == 1:
+#         if n == 1 or n == 2:
 #             return 1
+#         return self.tribonacci(n - 1) + self.tribonacci(n - 2) + self.tribonacci(n - 3)
 #
-#         return self.fib(N - 1) + self.fib(N - 2)
 
+def tribo(n: int, hm: {int: int}) -> int:
+    if n in hm:
+        return hm[n]
+    res = tribo(n - 1, hm) + tribo(n - 2, hm) + tribo(n - 3, hm)
+    hm[n] = res
+    return res
 
-# def fb(n: int, hm: {int: int}) -> int:
-#     if n in hm:
-#         return hm[n]
-#     result = fb(n - 1, hm) + fb(n - 2, hm)
-#     hm[n] = result
-#     return result
-#
-#
-# class Solution:
-#     def fib(self, N: int) -> int:
-#         dc = {0: 0, 1: 1}
-#
-#         return fb(N, dc)
 
 class Solution:
-    def fib(self, N: int) -> int:
-        if N == 0:
-            return 0
-        if N == 1:
-            return 1
-
-        pp = 0
-        p = 1
-        res = -1
-
-        for i in range(2, N + 1):
-            res = pp + p
-            pp = p
-            p = res
-        return res
+    def tribonacci(self, n: int) -> int:
+        return tribo(n, {0: 0, 1: 1, 2: 1})

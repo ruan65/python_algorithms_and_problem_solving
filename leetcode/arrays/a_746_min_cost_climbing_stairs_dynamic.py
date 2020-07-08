@@ -1,14 +1,13 @@
 class Solution:
     def minCostClimbingStairs(self, cost: [int]) -> int:
-        p = cost[0]
-        pp = 0
+        dp = [-1 for _ in range(len(cost) + 1)]
+        dp[0] = 0
+        dp[1] = cost[0]
 
-        for pr in cost[1:]:
-            curr = pr + min(p, pp)
-            pp = p
-            p = curr
+        for i in range(2, len(cost) + 1):
+            dp[i] = cost[i - 1] + min(dp[i - 1], dp[i - 2])
 
-        return min(p, pp)
+        return min(dp[-1], dp[-2])
 
 
 if __name__ == '__main__':

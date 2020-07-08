@@ -1,47 +1,23 @@
-from collections import Counter
+import heapq
+from collections import defaultdict
 
 
-def words_to_dict(words: [str]) -> {str: int}:
-    res: {str: int} = dict()
-    for w in words:
-        if w in res:
-            res[w] += 1
-        else:
-            res[w] = 1
-    return res
-
-
-def reverse_dict(dct: {str: int}) -> {int: [str]}:
-    res: {int: [str]} = dict()
-    for k, v in dct.items():
-        if v in res:
-            arr = res[v]
-            arr.append(k)
-            arr.sort()
-            res[v] = arr
-        else:
-            res[v] = [k]
-
-    return res
-
-
-def top_k_frequent(wrds: {int: [str]}, k: int) -> [str]:
-    res = []
-    frq = list(wrds.keys())
-    frq.sort(reverse=True)
-
-    for i in range(k):
-        if i < len(frq):
-            res.extend(wrds[frq[i]])
-    return res[:k]
-
-
-class Solution:
+class Solution(object):
     def topKFrequent(self, words: [str], k: int) -> [str]:
-        # to_dict = words_to_dict(words)
-        # rvrs = reverse_dict(to_dict)
-        # return top_k_frequent(rvrs, k)
-        return [ke for ke, v in sorted(Counter(words).items(), key=lambda x: (-x[1], x[0]))][:k]
+
+        dct = defaultdict(int)
+        for word in words:
+            dct[word] += 1
+
+        heap = []
+        for key, val in dct.items():
+            heapq.heappush(heap, (-val, key))
+        heapq.heapify(heap)
+        result = []
+        while k:
+            result.append(heapq.heappop(heap)[1])
+            k -= 1
+        return result
 
 
 if __name__ == '__main__':

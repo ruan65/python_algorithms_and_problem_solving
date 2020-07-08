@@ -9,19 +9,16 @@ class Solution:
 
         poi_s = poi_t = 0
 
-        while poi_s < len(s) and poi_t < len(t):
+        while poi_t < len(t):
+            if s[poi_s] == t[poi_t]:
+                poi_s += 1
 
-            ind = t[poi_t:].find(s[poi_s])
-            if ind == -1:
-                return False
-            poi_s += 1
-            poi_t = poi_t + ind + 1
-            if len(t) - poi_t < len(s) - poi_s:
-                return False
-
-        return True
+                if poi_s == len(s):
+                    return True
+            poi_t += 1
+        return False
 
 
 if __name__ == '__main__':
-    print(Solution().isSubsequence("ac",
+    print(Solution().isSubsequence("acb",
                                    "ahbgdc"))

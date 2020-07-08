@@ -1,24 +1,14 @@
 class Solution:
     def partitionLabels(self, S: str) -> [int]:
-        if len(S) == 1:
-            return [1]
+        if not S:
+            return []
+        i = 0
+        end = 1
+        while i < end:
+            end = max(end, S.rfind(S[i], i + 1) + 1)
+            i += 1
 
-        result: [int] = []
-
-        last_indices: {str: int} = {letter: S.rindex(letter) for letter in S}
-
-        for i in range(len(S)):
-            last_indices[ord(S[i]) - ord('a')] = i
-
-        start = 0
-        end = 0
-        for i in range(len(S)):
-            end = max(end, last_indices[S[i]])
-            if i == end:
-                result.append(end - start + 1)
-                start = end + 1
-
-        return result
+        return [i] + self.partitionLabels(S[i:])
 
 
 if __name__ == '__main__':

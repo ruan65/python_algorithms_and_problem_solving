@@ -2,24 +2,26 @@ class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         if not s:
             return True
-        if not t:
+        if len(t) < len(s):
             return False
-        cmp = ''
-        for c in t:
-            if c in s:
-                cmp += c
-        if len(cmp) < len(s):
-            return False
-        while s:
-            ind = cmp.find(s[0])
+        if len(s) == len(t):
+            return s == t
+
+        poi_s = poi_t = 0
+
+        while poi_s < len(s) and poi_t < len(t):
+
+            ind = t[poi_t:].find(s[poi_s])
             if ind == -1:
                 return False
-            s = s[1:]
-            cmp = cmp[ind:]
+            poi_s += 1
+            poi_t = poi_t + ind + 1
+            if len(t) - poi_t < len(s) - poi_s:
+                return False
 
         return True
 
 
 if __name__ == '__main__':
-    print(Solution().isSubsequence("aaaaaa",
-                                   "bbaaaa"))
+    print(Solution().isSubsequence("ac",
+                                   "ahbgdc"))

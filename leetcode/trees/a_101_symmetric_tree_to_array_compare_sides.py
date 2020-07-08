@@ -1,5 +1,3 @@
-import copy
-
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -7,39 +5,35 @@ class TreeNode:
         self.right = right
 
 
-def are_identical_trees(p: TreeNode, q: TreeNode) -> bool:
-    if not p and not q:
-        return True
-    elif not p or not q:
-        return False
-    elif p.val != q.val:
-        return False
-
-    return are_identical_trees(p.left, q.left) and are_identical_trees(p.right, q.right)
-
-
-def swap_tree(tr: TreeNode) -> TreeNode:
-    if not tr or (not tr.left and not tr.right):
-        return tr
-    sw_left = swap_tree(tr.left)
-    sw_right = swap_tree(tr.right)
-    tr.right = sw_left
-    tr.left = sw_right
-    return tr
+def tree_to_arr(node: TreeNode, dr) -> []:
+    if not node:
+        return [dr]
+    return tree_to_arr(node.left, 'l') + [node.val] + tree_to_arr(node.right, 'r')
 
 
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
-        if not root:
+        arr = tree_to_arr(root)
+        print(arr)
+        size = len(arr)
+        if size == 1:
             return True
-        if not root.left and not root.right:
-            return True
-        cp = copy.deepcopy(root)
-        return are_identical_trees(root, swap_tree(cp))
+        if size % 2 == 0:
+            return False
+        mid = size // 2
+        la, ra = arr[:mid], arr[mid + 1:]
+        print(la)
+        ra.reverse()
+        print(ra)
+        return la == ra
 
 
 if __name__ == '__main__':
-    t = TreeNode(1, right=TreeNode(2, left=TreeNode(3)), left=TreeNode(2, left=TreeNode(3)))
+    # [1, 2,2, 3,4,4,3]
+    # [1,2,2,2,null,2]
+    t = TreeNode(1, left=TreeNode(2, left=TreeNode(3), right=TreeNode(4)),
+                 right=TreeNode(2, left=TreeNode(4), right=TreeNode(3)))
+    # t = TreeNode(1, right=TreeNode(2, left=TreeNode(2)), left=TreeNode(2, right=TreeNode(2)))
     # t2 = TreeNode(1, left=TreeNode(2, right=TreeNode(3)))
     # print(f'left={t.left.val} right={t.right.val}')
     # swt = swap_tree(t)

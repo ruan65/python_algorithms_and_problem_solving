@@ -1,54 +1,18 @@
-# class Solution:
-#     def combinationSum(self, candidates: [int], target: int) -> [[int]]:
-#         def bt(ind: int, nms: [int], ct: int):
-#             if ct == 0:
-#                 res.append(list(nms))
-#                 return
-#             elif ct < 0:
-#                 return
-#             nm = candidates[ind]
-#             nms.append(nm)
-#             bt(ind, nms, ct - nm)
-#             nms.pop()
-#             if ind < len(candidates) - 1:
-#                 bt(ind + 1, nms, ct)
-#
-#         res = []
-#         if not candidates:
-#             return res
-#         bt(0, [], target)
-#         return res
-
-# class Solution:
-#     def combinationSum(self, candidates, target):
-#         def dfs(nums, trg, index, path):
-#             if trg < 0:
-#                 return  # backtracking
-#             if trg == 0:
-#                 res.append(path)
-#                 return
-#             for i in range(index, len(nums)):
-#                 dfs(nums, trg - nums[i], i, path + [nums[i]])
-#         res = []
-#         dfs(candidates, target, 0, [])
-#         return res
-
 class Solution:
-    def combinationSum(self, candidates, target):
-        def dfs(trg, index, path):
-            if trg < 0:
-                return  # backtracking
-            if trg == 0:
-                res.append(path)
-                return
-            for i in range(index, len(candidates)):
-                dfs(trg - candidates[i], i, path + [candidates[i]])
-
-        res = []
-        dfs(target, 0, [])
-        return res
-
-
+    def combinationSum(self, candidates: [int], target: int) -> [[int]]:
+        candidates.sort()
+        dp = [[] for _ in range(target + 1)]
+        for t in range(1, target + 1):  # dp[t] saves all combinations have t sum
+            for i in candidates:
+                if i > t:
+                    break  # from now on, all sum > t, break out
+                if i == t:
+                    dp[t].append([i])
+                    break  # the element value equals to current target t
+                # to ensure no duplicate, the later coming item should be strictly greater
+                # than previous ones, make the result a asc sequence.
+                dp[t].extend(path + [i] for path in dp[t - i] if i >= path[-1])
+        return dp[-1]
 
 
 if __name__ == '__main__':

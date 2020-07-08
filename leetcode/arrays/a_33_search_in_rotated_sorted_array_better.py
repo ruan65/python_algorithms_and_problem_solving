@@ -1,29 +1,8 @@
-# arr = [4, 5, 6, 7, 0, 1, 2]
-# arr = [4]
-# arr = [4, 5, 6, 7, 8, 70, 90, 0]
-# arr = [4, 5, 6, 1, 2]
-trgt = 0
-
-
-def _find_pivot(arr: [int], s, e, m) -> int:
-    if len(arr) == 1 or arr[0] < arr[len(arr) - 1]:
-        return 0
-    if arr[m] < arr[m - 1]:
-        return m
-    elif arr[m + 1] < arr[m]:
-        return m + 1
-    elif arr[m] > arr[0]:
-        s = m + 1
-    else:
-        e = m
-    return _find_pivot(arr, s, e, (s + e) // 2)
-
-
 def find_pivot(arr: [int]) -> int:
-    s = 0
-    e = len(arr)
-    m = (s + e) // 2
-    return _find_pivot(arr, s, e, m)
+    for i in range(1, len(arr)):
+        if arr[i - 1] > arr[i]:
+            return i
+    return 0
 
 
 def find_target_index(arr: [int], pivot: int, target: int) -> int:
