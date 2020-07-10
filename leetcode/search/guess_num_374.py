@@ -11,47 +11,24 @@ def guess(num: int) -> int:
         return -1
     return 0
 
-
-def give_variant(s, e):
-    v = (s + e) // 2
-    if v == s:
-        return e
-    if v == e:
-        return s
-    return v
-
-
-guessed: int = 1
+guessed: int = 100
 
 # end = 2147483647
 
 
 class Solution:
-    start = 1
-    end = 2147483647
-
-
-    def guessNumber(self, n: int) -> int:
-        if guess(n) == 0:
-            return n
-
-        while True:
-            if guess(self.start) == 0:
-                return self.start
-
-            if guess(self.end) == 0:
-                return self.end
-
-            n = give_variant(self.start, self.end)
-            if guess(n) == 0:
-                return n
-            elif guess(n) > 0:
-                self.start = n
+    def guessNumber(self, n):
+        lo, hi = 1, n
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if guess(mid) == 1:
+                lo = mid + 1
             else:
-                self.end = n
+                hi = mid
+        return lo
 
 
 
 
 
-print(Solution().guessNumber(2))
+print(Solution().guessNumber(200000000))

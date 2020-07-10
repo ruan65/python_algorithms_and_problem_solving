@@ -1,5 +1,5 @@
 from leetcode.search.b_search import b_search_recur, b_search_iterative, b_search_recur_poi
-from leetcode.search.b_search_index import Solution
+from leetcode.search.a_704_b_search_index import Solution
 
 big_data = [-998, -997, -995, -994, -991, -986, -984, -982, -981, -980, -978, -975, -973, -972, -970, -968, -967, -966,
             -962, -961, -960, -959, -958, -954, -953, -952, -950, -947, -946, -945, -944, -943, -942, -941, -939, -937,
