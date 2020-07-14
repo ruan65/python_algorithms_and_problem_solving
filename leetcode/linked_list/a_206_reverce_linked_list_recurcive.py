@@ -4,13 +4,13 @@ class ListNode:
         self.next = next
 
 
-# class Solution:
-#     def reverseList(self, head: ListNode) -> ListNode:
-#         res = None
-#         while head:
-#             res = ListNode(head.val, res)
-#             head = head.next
-#         return res
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        res = None
+        while head:
+            res = ListNode(head.val, res)
+            head = head.next
+        return res
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:

@@ -39,9 +39,10 @@ def top_k_frequent(wrds: {int: [str]}, k: int) -> [str]:
 class Solution:
     def topKFrequent(self, words: [str], k: int) -> [str]:
         # to_dict = words_to_dict(words)
-        # rvrs = reverse_dict(to_dict)
-        # return top_k_frequent(rvrs, k)
-        return [ke for ke, v in sorted(Counter(words).items(), key=lambda x: (-x[1], x[0]))][:k]
+        to_dict = Counter(words)
+        rvrs = reverse_dict(to_dict)
+        return top_k_frequent(rvrs, k)
+        # return [ke for ke, v in sorted(Counter(words).items(), key=lambda x: (-x[1], x[0]))][:k]
 
 
 if __name__ == '__main__':

@@ -1,25 +1,23 @@
 class Solution:
-
     def numIslands(self, grid: [[str]]) -> int:
-
         if not grid:
             return 0
-
-        def dfs(i, j):
-            if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[0]) or grid[i][j] != '1':
-                return
-            grid[i][j] = '0'
-            dfs(i + 1, j)
-            dfs(i - 1, j)
-            dfs(i, j + 1)
-            dfs(i, j - 1)
-
         count = 0
-        for r in range(len(grid)):
-            for c in range(len(grid[0])):
-                if grid[r][c] == '1':
-                    dfs(r, c)
+
+        def dfs(r, c):
+            if r < 0 or c < 0 or r >= len(grid) or c >= len(grid[0]) or grid[r][c] != '1':
+                return
+            grid[r][c] = '0'
+            dfs(r - 1, c)
+            dfs(r + 1, c)
+            dfs(r, c - 1)
+            dfs(r, c + 1)
+
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
+                if grid[row][col] == '1':
                     count += 1
+                    dfs(row, col)
         return count
 
 
@@ -28,9 +26,6 @@ if __name__ == '__main__':
         ["1", "1", "1", "1", "0"],
         ["1", "1", "0", "1", "0"],
         ["1", "1", "0", "0", "0"],
-        ["0", "0", "0", "0", "0"],
+        ["0", "0", "0", "1", "0"],
     ]
-
-    solution = Solution()
-    res = solution.numIslands(gr)
-    print(res)
+    print(Solution().numIslands(gr))

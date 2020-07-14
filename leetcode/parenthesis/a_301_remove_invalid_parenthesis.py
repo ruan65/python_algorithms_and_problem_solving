@@ -1,41 +1,34 @@
-def is_parth_sequence_valid(s: str) -> bool:
-    if not s:
-        return True
-    if s.find('()') == -1:
-        return False
-    return is_parth_sequence_valid(s.replace('()', ''))
-
-
 def is_valid(s: str) -> bool:
-    stack = []
-    for pr in s:
-        if pr in ['(', '[', '{']:
-            stack.append(pr)
-        elif len(stack) == 0 or stack.pop() + pr not in ["()"]:
+    count = 0
+    for c in s:
+        count += (c == '(') - (c == ')')
+        if count < 0:
             return False
-    return len(stack) == 0
+    return not count
 
 
 class Solution:
     def removeInvalidParentheses(self, s: str) -> [str]:
+        st = {s}
 
-        result = []
-        md = ''
-        if not s:
-            return result
-        for i in range(len(s)):
-            if s[i] in ['(', ')']:
-                md = s[:i] + s[i + 1:]
+        while True:
+            res = []
+            for w in st:
+                if is_valid(w):
+                    res.append(w)
+            if res:
+                return res
+            st2 = set()
 
-            if is_parth_sequence_valid(md):
-                if md not in result:
-                    result.append(md)
-        return result
+            for w in st:
+                for i in range(len(w)):
+                    st2.add(w[:i] + w[i + 1:])
+            print(st2)
+            st = st2
 
 
 if __name__ == '__main__':
-    # ps = "(a)())()"
-    # print(Solution().removeInvalidParentheses(ps))
+    ps = "(a)(())"
+    print(Solution().removeInvalidParentheses(ps))
 
-    sq = '(a)'
-    print(is_valid(sq))
+    print(is_valid(ps))

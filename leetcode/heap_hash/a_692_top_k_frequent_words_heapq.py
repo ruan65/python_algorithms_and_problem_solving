@@ -1,19 +1,16 @@
 import heapq
-from collections import defaultdict
+from collections import Counter
 
 
 class Solution(object):
     def topKFrequent(self, words: [str], k: int) -> [str]:
 
-        dct = defaultdict(int)
-        for word in words:
-            dct[word] += 1
+        dct = Counter(words)
+        heap, result = [], []
 
-        heap = []
         for key, val in dct.items():
             heapq.heappush(heap, (-val, key))
-        heapq.heapify(heap)
-        result = []
+
         while k:
             result.append(heapq.heappop(heap)[1])
             k -= 1

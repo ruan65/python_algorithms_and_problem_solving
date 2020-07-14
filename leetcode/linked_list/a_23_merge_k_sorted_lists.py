@@ -6,8 +6,6 @@ class ListNode:
 
 
 import heapq
-
-
 class Solution:
     def mergeKLists(self, lists: [ListNode]) -> ListNode:
         if not lists:

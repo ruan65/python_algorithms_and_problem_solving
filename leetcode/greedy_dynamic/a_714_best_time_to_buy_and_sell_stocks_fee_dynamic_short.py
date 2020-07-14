@@ -21,5 +21,5 @@ class Solution:
 
 if __name__ == '__main__':
     pr_list = [2, 8, 2, 10, 0, 1, 2]
-    print(Solution().maxProfit(pr_list))
+    print(Solution().maxProfit(pr_list, 2))
     # print(Solution().maxProfit(stock_prices))

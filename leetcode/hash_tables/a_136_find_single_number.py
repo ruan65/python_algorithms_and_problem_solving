@@ -39,17 +39,17 @@
 #
 #         return list(s)[0]
 
-# class Solution:
-#     def singleNumber(self, nums: [int]) -> int:
-#         s = set()
-#
-#         for e in nums:
-#             if e in s:
-#                 s.remove(e)
-#             else:
-#                 s.add(e)
-#
-#         return list(s)[0]
+class Solution:
+    def singleNumber(self, nums: [int]) -> int:
+        s = set()
+
+        for e in nums:
+            if e in s:
+                s.remove(e)
+            else:
+                s.add(e)
+
+        return list(s)[0]
 
 
 class Solution:

@@ -11,7 +11,8 @@ class Solution:
             if not travel[i]:
                 dp[i] = dp[i - 1]
             else:
-                dp[i] = min(dp[i - 1] + pr1, dp[max(i - 7, 0)] + pr7, dp[max(i - 30, 0)] + pr30)
+                dp[i] = min(dp[i - 1] + pr1, dp[max(i - 7, 0)] +
+                            pr7, dp[max(i - 30, 0)] + pr30)
         return dp[last_day]
 
 

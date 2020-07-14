@@ -8,14 +8,10 @@ def top_k_frequent(arr: [int], h: int) -> [int]:
     for i in arr:
         dct[i] += 1
 
-    heap = []
+    answer, heap = [], []
 
     for k, v in dct.items():
         heapq.heappush(heap, (-v, k))
-
-    heapq.heapify(heap)
-
-    answer = []
 
     while h:
         heappop = heapq.heappop(heap)
@@ -32,4 +28,4 @@ class Solution:
 
 if __name__ == '__main__':
     inp = [1, 1, 1, 7, 2, 3, 3, 4]
-    print(top_k_frequent(inp, 3))
+    print(top_k_frequent(inp, 4))

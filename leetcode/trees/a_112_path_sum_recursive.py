@@ -9,17 +9,15 @@ class TreeNode:
         return f'node[{self.val} l: {self.left is not None} r: {self.right is not None}]'
 
 
-def has_path_sum_rec(node: TreeNode, k: int) -> bool:
-    if not node:
-        return False
-    if not node.left and not node.right:
-        return node.val == k
-    return has_path_sum_rec(node.right, k - node.val) or has_path_sum_rec(node.left, k - node.val)
-
-
 class Solution:
-    def hasPathSum(self, root: TreeNode, sum: int) -> bool:
-        return has_path_sum_rec(root, sum)
+    def hasPathSum(self, node: TreeNode, k: int) -> bool:
+        def has(nd: TreeNode, m: int) -> bool:
+            if not nd:
+                return False
+            if not nd.left and not nd.right:
+                return m == nd.val
+            return has(nd.left, m - nd.val) or has(nd.right, m - nd.val)
+        return has(node, k)
 
 
 if __name__ == '__main__':

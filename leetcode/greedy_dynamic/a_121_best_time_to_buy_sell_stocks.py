@@ -2,6 +2,16 @@ import sys
 
 from leetcode.greedy_dynamic.big_data import stock_prices
 
+# class Solution:
+#     def maxProfit(self, pr: [int]) -> int:
+#         if not pr or len(pr) == 1:
+#             return 0
+#         dp = [0 for _ in range(len(pr))]
+#         mn = pr[0]
+#         for i in range(1, len(pr)):
+#             mn = min(mn, pr[i - 1])
+#             dp[i] = max(dp[i-1], pr[i] - mn)
+#         return dp[-1]
 
 class Solution:
     def maxProfit(self, prices: [int]) -> int:
