@@ -101,5 +101,8 @@
 # print((1, 2)[0])
 
 
-number = 4
-print([n for n in range(1, number + 1)])
+# number = 4
+# print([n for n in range(1, number + 1)])
+
+st = 'a b c a'
+print(st.split())

@@ -1,0 +1,10 @@
+#Software: Microsoft Internet Information Services 10.0
+#Version: 1.0
+#Date: 2017-11-18 00:01:07
+#Fields: date time cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs-version cs(User-Agent) cs(Cookie) cs(Referer) cs-host sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+2017-11-18 08:48:20 GET /de adpar=12345&gclid=1234567890 443 - 149.172.138.41 HTTP/2.0 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/62.0.3202.89+Safari/537.36+OPR/49.0.2725.39 - https://www.google.de/ www.site-logfile-explorer.com 301 0 0 624 543 46
+2017-11-18 08:48:20 GET /de/ adpar=12345&gclid=1234567890 443 - 149.172.138.41 HTTP/2.0 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/62.0.3202.89+Safari/537.36+OPR/49.0.2725.39 - https://www.google.de/ www.site-logfile-explorer.com 200 0 0 12973 544 62
+2017-11-18 11:45:11 GET /global/lwb.min.js - 443 - 87.185.206.252 HTTP/2.0 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:57.0)+Gecko/20100101+Firefox/57.0 _ga=GA1.2.573603466.1510956966;+_gid=GA1.2.622072548.1510956966 https://translate.google.com/ www.site-logfile-explorer.com 200 0 0 2429 473 15
+2017-11-18 11:45:11 GET /global/img/body_bg.png - 443 - 87.185.206.252 HTTP/2.0 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:57.0)+Gecko/20100101+Firefox/57.0 _ga=GA1.2.573603466.1510956966;+_gid=GA1.2.622072548.1510956966 https://translate.google.com/ www.site-logfile-explorer.com 304 0 0 232 477 33
+2017-11-18 11:45:11 GET /global/img/content_bg_top.png - 443 - 87.185.206.252 HTTP/2.0 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:57.0)+Gecko/20100101+Firefox/57.0 _ga=GA1.2.573603466.1510956966;+_gid=GA1.2.622072548.1510956966 https://translate.google.com/ www.site-logfile-explorer.com 304 0 0 232 484 33
+2017-11-18 11:45:11 GET /global/img/menu_spacer.png - 443 - 87.185.206.252 HTTP/2.0 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64;+rv:57.0)+Gecko/20100101+Firefox/57.0 _ga=GA1.2.573603466.1510956966;+_gid=GA1.2.622072548.1510956966
